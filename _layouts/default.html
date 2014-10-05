@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="container">
+    
+      {% include breadcrumbs.html %}
+      
+      <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+    
+      <div class="row">
+        {% if page.panel == true %}
+        <div class="col-md-4 appeal-search">
+          {% include panel.html %}
+        </div>
+        <div class="results col-md-8">
+          {{ content }}
+        </div>
+        {% else %}
+        <div class="col-md-12">
+          {{ content }}
+        </div>
+        {% endif %}
+      </div>
+      
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>
