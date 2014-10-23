@@ -1,6 +1,6 @@
 ---
 layout: default
-panel: true
+title: What is Open Data?
 ---
 
 In April of 2012, Mayor Nutter established a formal open data policy for the City of Philadelphia with [Executive Order 1-12]({{ "/executive-order/" | prepend: site.baseurl }}). 
