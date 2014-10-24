@@ -2,8 +2,3 @@
 title: Open Data
 baseurl: "/slash-data-temp" # the subpath of your site, e.g. /blog/
 url: "http://www.phila.gov" # the base hostname & protocol for your site
-twitter_username: jekyllrb
-github_username:  jekyll
-
-# Build settings
-markdown: kramdown
