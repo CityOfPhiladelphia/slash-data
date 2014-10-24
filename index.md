@@ -3,12 +3,13 @@ layout: default
 title: Open Data
 ---
 
-# WHAT IS OPEN DATA?
-
-A few sentences explaining open data. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-In April of 2012, Mayor Nutter established a formal open data policy for the City of Philadelphia with [Executive Order 1-12]({{ "/executive-order/" | prepend: site.baseurl }}). The resources listed here can be used to access open data from the City of Philadelphia, and describe the efforts we are undertaking to make more data available to the public.
-
+<h1>WHAT IS OPEN DATA?</h1>
+<div class="row">
+  <div class="col-md-12">
+    <p>A few sentences explaining open data. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <p>In April of 2012, Mayor Nutter established a formal open data policy for the City of Philadelphia with [Executive Order 1-12]({{ "/executive-order/" | prepend: site.baseurl }}). The resources listed here can be used to access open data from the City of Philadelphia, and describe the efforts we are undertaking to make more data available to the public.</p>
+  </div>
+</div>
 <div class="row">
   <div class="col-xs-12 col-md-6">
     <div class="panel panel-default">
