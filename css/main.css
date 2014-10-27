@@ -111,6 +111,10 @@ h1 {
 	padding-bottom:5px;
 }
 
+.navbar-brand {
+  padding-top: 8px;
+}
+
 /* .navbar-nav > li > a > img {
 	padding-top:0px !important; 
 	padding-bottom:0px !important;
