@@ -1,3 +1,37 @@
+body {
+  background-color: #eee;
+  font-family: 'Montserrat', sans-serif;
+}
+h1 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.mission {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.intro {
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.data-action {
+  text-align: center;
+}
+.data-action a {
+  font-weight: bold;
+}
+/* panels same height when side by side */
+@media (min-width: 992px) {
+  .resource-text {
+    height: 6em;
+  }
+  .data-action-text {
+    height: 9em;
+  }
+}
+
 .detail-appeal-no {
 	color: #c0c0c0;
 }
@@ -62,7 +96,8 @@
 	margin-bottom: 20px;
 }
 
-.navbar-nav > li > a {
+.navbar-inverse .navbar-nav > li > a {
+  color: #ccc;
 	padding-top:5px; 
 	padding-bottom:5px;
 }
@@ -74,9 +109,11 @@
 
 
 .navbar {
-	min-height:41px !important;
-	padding-top: 5px;
-	padding-bottom: 5px;
+  background-color: #3661a2;
+  border-color: #c7c7c7;
+  min-height:41px !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .header-link {
