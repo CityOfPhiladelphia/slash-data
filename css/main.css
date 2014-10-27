@@ -1,8 +1,9 @@
 body {
   background-color: #eee;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
 h1 {
@@ -22,7 +23,8 @@ h1 {
 .data-action {
   text-align: center;
 }
-.data-action a {
+.data-action a, .resources a {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
 .data-action-icon {
@@ -36,7 +38,7 @@ h1 {
 }
 /* panels same height when side by side */
 @media (min-width: 992px) {
-  .resource-text {
+  .resources p {
     height: 6em;
   }
   .data-action-text {
