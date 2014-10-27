@@ -22,6 +22,15 @@ h1 {
 .data-action a {
   font-weight: bold;
 }
+.data-action-icon {
+  background-color: #333;
+  border-radius: 50%;
+  color: #fff;
+  line-height: 2em;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  width: 2em;
+}
 /* panels same height when side by side */
 @media (min-width: 992px) {
   .resource-text {
