@@ -1,6 +1,6 @@
 ---
 layout: default
-panel: true
+panel: false
 title: Executive Order 1-12
 permalink: /executive-order/
 ---
