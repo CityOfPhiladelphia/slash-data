@@ -11,9 +11,6 @@ $(document).on('knack-scene-render.scene_1', function (event, page) {
     url: 'https://api.knackhq.com/v1/scenes/scene_1/views/view_28/records?rows_per_page=9999',
     success: drawCharts
   });
-
-  // Clearfix where necessary
-  //$('.view_5, .view_18, .view_19, .view_20').addClass('btcf')
 })
 
 function drawCharts (chartData) {
