@@ -20,6 +20,18 @@ h1 {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+.resources .panel {
+  background-color: #cecece;
+  border-color: #bcbbbb;
+}
+.resources h3 {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.resources .btn {
+  background-color: #333;
+  color: #fff;
+}
 .data-action {
   text-align: center;
 }
