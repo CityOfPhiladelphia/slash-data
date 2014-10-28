@@ -11,19 +11,27 @@ $(document).on('knack-scene-render.scene_1', function (event, page) {
     url: 'https://api.knackhq.com/v1/scenes/scene_1/views/view_28/records?rows_per_page=9999',
     success: drawCharts
   });
-  
+
   // Clearfix where necessary
   //$('.view_5, .view_18, .view_19, .view_20').addClass('btcf')
 })
 
 function drawCharts (chartData) {
   var records = chartData.records
-  
+
   // Exclude non-city data sets
   records = records.filter(function (record) {
     return record.field_69 == 'No'
   })
   //console.log('chart records:', records);
+
+
+  // Released count and department totals in one bootstrap row
+  var row = $('#view_41')
+  row.addClass('row')
+  var releasedCount = $('<div class="col-xs-12 col-md-6"></div>')
+  var departmentTotals = releasedCount.clone()
+  row.append(releasedCount, departmentTotals)
 
 
   // Released count column chart
@@ -47,17 +55,56 @@ function drawCharts (chartData) {
     return [quarter, counts[quarter]]
   }))
   //console.log('relArr:', releasedArray)
-  
+
   var data = google.visualization.arrayToDataTable(releasedArray);
   var options = {
     title: 'Released Datasets by Quarter',
     legend: {position: 'none'},
+    height: 220,
     hAxis: {slantedText: true},
     vAxis: {minValue: 0, ticks: [0,5,10,15,20,25,30]},
     backgroundColor: 'transparent'
   };
-  var chart = new google.visualization.ColumnChart(document.getElementById('view_22'));
+  var chart = new google.visualization.ColumnChart(releasedCount[0]);
   chart.draw(data, options);
+
+
+  // Department totals chart
+
+  var byDept = records.reduce(function (depts, rec) {
+    var dept = rec.field_120
+    depts[dept] ? depts[dept]++ : depts[dept] = 1
+    return depts
+  }, {})
+
+  var rows = Object.keys(byDept).map(function (dept) {
+    return {c: [
+      {v: dept.replace(/<[^>]*>/g, '')},
+      {v: byDept[dept]}
+    ]}
+  })//.sort(function (a, b) {
+  //  return b[1] - a[1]
+  //})
+
+  var data = new google.visualization.DataTable({
+    cols: [
+      {label: 'Department', type: 'string'},
+      {label: 'Datasets', type: 'number'}
+    ],
+    rows: rows
+  })
+
+  var options = {
+    title: 'Department Totals',
+    pieHole: 0.4,
+    sliceVisibilityThreshold: .05,
+    height: 220,
+    chartArea: {top: 40, left: 0, height: '90%', width: '90%'},
+    backgroundColor: 'transparent'
+  }
+
+  var chart = new google.visualization.PieChart(departmentTotals[0])
+  chart.draw(data, options)
 
 
   // Demand vs. Complexity scatterplot
@@ -71,7 +118,7 @@ function drawCharts (chartData) {
     var published = rec.field_131 == 'Y' || null
     var notPublished = !published || null
     var name = rec.field_119
-    
+
     // Cost and demand are fuzzied for better scatter
     var fuzzyCost = cost - 0.5 + Math.random()
     var fuzzyDemand = demand - 0.5 + Math.random()
@@ -131,43 +178,5 @@ function drawCharts (chartData) {
     }
   };
   var chart = new google.visualization.ScatterChart(document.getElementById('view_23'));
-  chart.draw(data, options)
-  
-  
-  // Department totals chart
-  
-  var byDept = records.reduce(function (depts, rec) {
-    var dept = rec.field_120
-    depts[dept] ? depts[dept]++ : depts[dept] = 1
-    return depts
-  }, {})
-  
-  var rows = Object.keys(byDept).map(function (dept) {
-    return {c: [
-      {v: dept.replace(/<[^>]*>/g, '')},
-      {v: byDept[dept]}
-    ]}
-  })//.sort(function (a, b) {
-  //  return b[1] - a[1]
-  //})
-  
-  var data = new google.visualization.DataTable({
-    cols: [
-      {label: 'Department', type: 'string'},
-      {label: 'Datasets', type: 'number'}
-    ],
-    rows: rows
-  })
-  
-  var options = {
-    title: 'Department Totals',
-    pieHole: 0.4,
-    sliceVisibilityThreshold: .05,
-    height: 220,
-    chartArea: {top: 40, left: 0, height: '90%', width: '90%'},
-    backgroundColor: 'transparent'
-  }
-  
-  var chart = new google.visualization.PieChart(document.getElementById('view_24'))
   chart.draw(data, options)
 }
