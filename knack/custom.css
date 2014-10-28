@@ -2,23 +2,3 @@
 .view_28 {
   display: none;
 }
-
-/* Float charts on larger screens
-@media only screen 
-and (min-width : 768px) {
-  .view_22 {
-            float: right;
-            width: 40%;
-          }
-  .view_23, .view_24 {
-            float: left;
-            width: 40%;
-          }
-
-  .btcf:after {
-	  		content:"";
-   		    display:table;
-   		    clear:both;
-		  }
-}
-*/
