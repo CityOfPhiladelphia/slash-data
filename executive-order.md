@@ -4,6 +4,9 @@ panel: false
 title: Executive Order 1-12
 permalink: /executive-order/
 ---
+
+{% include breadcrumbs.html %}
+
 ### OPEN DATA AND GOVERNMENT TRANSPARENCY
 
 *WHEREAS*, the City of Philadelphia is committed to creating a high level of openness and transparency in government; and
