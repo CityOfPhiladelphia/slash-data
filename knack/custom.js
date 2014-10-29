@@ -21,6 +21,11 @@ function drawCharts (chartData) {
     return record.field_69 == 'No'
   })
 
+  // Filter for published
+  var published = records.filter(function (rec) {
+    return rec.field_131 == 'Y'
+  })
+
   // Released count and department totals in a bootstrap row
   var datasetsAndDepartments = $('#view_41')
   datasetsAndDepartments.append('<div class="row">' +
@@ -49,7 +54,7 @@ function drawCharts (chartData) {
   // Released count column chart
 
   // Exclude pre-2012-Q2 for this chart
-  post2012q2 = records.filter(function (rec) {
+  post2012q2 = published.filter(function (rec) {
     return rec.field_190 >= '2012-Q2'
   })
 
@@ -87,7 +92,7 @@ function drawCharts (chartData) {
 
   // Department totals chart
 
-  var byDept = records.reduce(function (depts, rec) {
+  var byDept = published.reduce(function (depts, rec) {
     var dept = rec.field_120
     depts[dept] ? depts[dept]++ : depts[dept] = 1
     return depts
