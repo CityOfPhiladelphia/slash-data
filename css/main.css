@@ -127,7 +127,7 @@ a:hover {
 
 .navbar-inverse .navbar-nav > li > a {
   color: #ccc;
-	padding-top:5px; 
+	padding-top:5px;
 	padding-bottom:5px;
 }
 
@@ -136,7 +136,7 @@ a:hover {
 }
 
 /* .navbar-nav > li > a > img {
-	padding-top:0px !important; 
+	padding-top:0px !important;
 	padding-bottom:0px !important;
 } */
 
@@ -161,33 +161,33 @@ a:hover {
     font-size: inherit;
 }
 
-#feedback { 
-  width: 104px; 
-  position: fixed; 
+#feedback {
+  width: 104px;
+  position: fixed;
   bottom: 0;
   right: 10%;
   z-index: 999;
   text-align: center;
   /*transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg); 
-  -moz-transform: rotate(-90deg); 
-  -o-transform: rotate(-90deg); 
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/
 }
 
-#feedback a { 
-  display: block; 
-  background: #f00; 
-  height: 25px; 
-  width: 100px; 
-  color: #fff; 
-  font-family: Arial, sans-serif; 
-  font-size: 17px; 
-  font-weight: bold; 
-  text-decoration: none; 
+#feedback a {
+  display: block;
+  background: #f00;
+  height: 25px;
+  width: 100px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
   border: solid 1px #333;
 }
 
-#feedback a:hover { 
-  background: #06c; 
+#feedback a:hover {
+  background: #06c;
 }
