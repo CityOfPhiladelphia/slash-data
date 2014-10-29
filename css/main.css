@@ -153,14 +153,6 @@ a:hover {
 	padding: 5px;
 }
 
-.breadcrumb {
-    padding: 0;
-}
-
-.breadcrumb li {
-    font-size: inherit;
-}
-
 #feedback {
   width: 104px;
   position: fixed;
