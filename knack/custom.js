@@ -20,30 +20,46 @@ function drawCharts (chartData) {
   records = records.filter(function (record) {
     return record.field_69 == 'No'
   })
-  //console.log('chart records:', records);
 
+  // Released count and department totals in a bootstrap row
+  var datasetsAndDepartments = $('#view_41')
+  datasetsAndDepartments.append('<div class="row">' +
+                                  '<div class="col-xs-12 col-md-6">' +
+                                    '<h2><span id="release-count"></span> Datasets</h2>' +
+                                    '<div class="panel panel-default">' +
+                                      '<div class="panel-body">' +
+                                        '<div id="released-count-chart"></div>' +
+                                      '</div>' +
+                                    '</div>' +
+                                  '</div>' +
+                                  '<div class="col-xs-12 col-md-6">' +
+                                    '<h2><span id="dept-count"></span> Departments</h2>' +
+                                    '<div class="panel panel-default">' +
+                                      '<div class="panel-body">' +
+                                        '<div id="department-totals-chart"></div>' +
+                                      '</div>' +
+                                    '</div>' +
+                                  '</div>' +
+                                '</div>')
 
-  // Released count and department totals in one bootstrap row
-  var row = $('#view_41')
-  row.addClass('row')
-  var releasedCount = $('<div class="col-xs-12 col-md-6"></div>')
-  var departmentTotals = releasedCount.clone()
-  row.append(releasedCount, departmentTotals)
+  // Set release-count header
+  $('#release-count').text(records.length)
 
 
   // Released count column chart
 
-  var counts = records.reduce(function (c, rec) {
-    var quarter = rec.field_190
+  // Exclude pre-2012-Q2 for this chart
+  post2012q2 = records.filter(function (rec) {
+    return rec.field_190 >= '2012-Q2'
+  })
 
-    // Only include records after 2012-Q2
-    if (quarter >= '2012-Q2') 
-      // Increment or create count
-      c[quarter] ? c[quarter]++ : c[quarter] = 1
+  var counts = {}
+  post2012q2.forEach(function (rec) {
+    var q = rec.field_190
 
-    return c
-  }, {})
-  //console.log('counts:', counts)
+    // Increment or create count
+    counts[q] ? counts[q]++ : counts[q] = 1
+  })
 
   // Array with quarters sorted
   var releasedArray = [
@@ -51,18 +67,21 @@ function drawCharts (chartData) {
   ].concat(Object.keys(counts).sort().map(function (quarter) {
     return [quarter, counts[quarter]]
   }))
-  //console.log('relArr:', releasedArray)
 
   var data = google.visualization.arrayToDataTable(releasedArray);
   var options = {
     title: 'Released Datasets by Quarter',
     legend: {position: 'none'},
-    height: 220,
-    hAxis: {slantedText: true},
+    chartArea: {top: 40, height: '60%', width: '80%'},
+    height: 300,
+    hAxis: {
+      slantedText: true,
+      title: 'Excludes 44 datasets released prior to the Executive Order in 2012-Q2'
+    },
     vAxis: {minValue: 0, ticks: [0,5,10,15,20,25,30]},
     backgroundColor: 'transparent'
   };
-  var chart = new google.visualization.ColumnChart(releasedCount[0]);
+  var chart = new google.visualization.ColumnChart(document.getElementById('released-count-chart'));
   chart.draw(data, options);
 
 
@@ -79,9 +98,10 @@ function drawCharts (chartData) {
       {v: dept.replace(/<[^>]*>/g, '')},
       {v: byDept[dept]}
     ]}
-  })//.sort(function (a, b) {
-  //  return b[1] - a[1]
-  //})
+  })
+
+  // Set dept-count header
+  $('#dept-count').text(rows.length)
 
   var data = new google.visualization.DataTable({
     cols: [
@@ -93,14 +113,14 @@ function drawCharts (chartData) {
 
   var options = {
     title: 'Department Totals',
+    chartArea: {top: 40, height: '75%', width: '80%'},
     pieHole: 0.4,
-    sliceVisibilityThreshold: .05,
-    height: 220,
-    chartArea: {top: 40, left: 0, height: '90%', width: '90%'},
+    sliceVisibilityThreshold: .02,
+    height: 300,
     backgroundColor: 'transparent'
   }
 
-  var chart = new google.visualization.PieChart(departmentTotals[0])
+  var chart = new google.visualization.PieChart(document.getElementById('department-totals-chart'))
   chart.draw(data, options)
 
 
@@ -174,6 +194,18 @@ function drawCharts (chartData) {
       viewWindow: {max: 6},
     }
   };
-  var chart = new google.visualization.ScatterChart(document.getElementById('view_23'));
+
+  var scatterChart = $('#view_23')
+  scatterChart.append('<div class="row">' +
+                        '<div class="col-md-12">' +
+                          '<div class="panel panel-default">' +
+                            '<div class="panel-body">' +
+                              '<div id="scatter-chart"></div>' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>' +
+                      '</div>')
+
+  var chart = new google.visualization.ScatterChart(document.getElementById('scatter-chart'));
   chart.draw(data, options)
 }
