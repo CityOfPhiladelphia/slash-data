@@ -16,11 +16,6 @@ $(document).on('knack-scene-render.scene_1', function (event, page) {
 function drawCharts (chartData) {
   var records = chartData.records
 
-  // Exclude non-city data sets
-  records = records.filter(function (record) {
-    return record.field_69 == 'No'
-  })
-
   // Filter for published
   var published = records.filter(function (rec) {
     return rec.field_131 == 'Y'
@@ -48,7 +43,7 @@ function drawCharts (chartData) {
                                 '</div>')
 
   // Set release-count header
-  $('#release-count').text(records.length)
+  $('#release-count').text(published.length)
 
 
   // Released count column chart
