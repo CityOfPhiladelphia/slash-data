@@ -54,7 +54,7 @@ a:hover {
 /* panels same height when side by side */
 @media (min-width: 992px) {
   .resources p {
-    height: 6em;
+    height: 8em;
   }
   .data-action-text {
     height: 9em;
