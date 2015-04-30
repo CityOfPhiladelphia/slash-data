@@ -1,16 +1,21 @@
 // Don't do anything until page is rendered
 $(document).on('knack-scene-render.scene_1', function (event, page) {
-  // Get chart data
-  $.ajax({
-    dataType: 'json',
-    headers: {
-      'X-Knack-Application-Id': '541b04e99a3db5a01b00b13b',
-      'X-Knack-REST-API-Key': 'knack'
-    },
-    // Chart data is in table at view_28 (hidden by CSS)
-    url: 'https://api.knackhq.com/v1/scenes/scene_1/views/view_28/records?rows_per_page=9999',
-    success: drawCharts
-  });
+  // Load the Visualization API and the piechart package.
+  google.load('visualization', '1.0', {packages:['corechart'], callback: getData});
+
+  function getData () {
+    // Get chart data
+    $.ajax({
+      dataType: 'json',
+      headers: {
+        'X-Knack-Application-Id': '541b04e99a3db5a01b00b13b',
+        'X-Knack-REST-API-Key': 'knack'
+      },
+      // Chart data is in table at view_28 (hidden by CSS)
+      url: 'https://api.knackhq.com/v1/scenes/scene_1/views/view_28/records?rows_per_page=9999',
+      success: drawCharts
+    });
+  }
 })
 
 function drawCharts (chartData) {
