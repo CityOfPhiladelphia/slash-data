@@ -1,3 +1,4 @@
 # Site settings
 title: Open Data
+baseurl: /data
 url: "http://www.phila.gov" # the base hostname & protocol for your site
