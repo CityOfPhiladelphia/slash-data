@@ -1,4 +1,4 @@
 # Site settings
 title: Open Data
-baseurl: "/slash-data" # the subpath of your site, e.g. /blog/
+# baseurl: "/slash-data" # the subpath of your site, e.g. /blog/
 url: "http://www.phila.gov" # the base hostname & protocol for your site
